@@ -25,11 +25,15 @@ public class SettingFragment extends BaseFragment {
 
     @Override
     protected void setListeners() {
-
+        rootView.findViewById(R.id.btn_change).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_change:
 
+                break;
+        }
     }
 }

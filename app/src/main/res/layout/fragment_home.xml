@@ -28,27 +28,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"/>
-        <Button
-            android:text="建设部网站"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <Button
-            android:text="公安部网站"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-        <Button
-            android:text="12306网站"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
-        <Button
-            android:text="百度地图网站"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_contribution"
+            style="@style/HomeLinkButton"
+            android:text="建设部网站" />
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_police"
+            style="@style/HomeLinkButton"
+            android:text="公安部网站" />
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_metro"
+            style="@style/HomeLinkButton"
+            android:text="铁道部网站" />
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_baidu"
+            style="@style/HomeLinkButton"
+            android:text="百度地图网站" />
 
     </LinearLayout>
 

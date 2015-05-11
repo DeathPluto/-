@@ -1,9 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:text="setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_previous"
+            android:text="前月"
+            style="@style/TotalItem.Button" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_centerHorizontal="true"
+            android:text="2011/6"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            style="@style/TotalItem.TextView" />
+
+        <com.gc.materialdesign.views.ButtonRectangle
+            android:id="@+id/btn_next"
+            android:text="次月"
+            android:layout_alignParentRight="true"
+            style="@style/TotalItem.Button" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="18dp"
+        android:background="@drawable/bg_total_item_round_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="10dp"
+            android:text="上班天数"
+            style="@style/TotalItem.TextView" />
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_alignParentRight="true"
+            android:text="4天"
+            style="@style/TotalItem.TextView" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="18dp"
+        android:background="@drawable/bg_total_item_top_half_round_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="10dp"
+            android:text="上班时间(合计)"
+            style="@style/TotalItem.TextView" />
+
+        <TextView
+            android:id="@+id/tv_time_total"
+            android:layout_alignParentRight="true"
+            android:text="64:54"
+            style="@style/TotalItem.TextView" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@drawable/bg_total_item_bottom_half_round_corner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="10dp"
+            android:text="上班时间(平均)"
+            style="@style/TotalItem.TextView" />
+
+        <TextView
+            android:id="@+id/tv_time_average"
+            android:layout_alignParentRight="true"
+            android:text="16:14"
+            style="@style/TotalItem.TextView" />
+    </RelativeLayout>
+
+
 </LinearLayout>

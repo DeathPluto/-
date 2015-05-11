@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="uniform_blue">#007CC2</color>
+    <color name="pink">#F9597D</color>
+    <color name="light_blue">#803399ff</color>
+    <color name="c_1E88E5">#1E88E5</color>
     <color name="warning_orange">#E2610A</color>
+    <color name="c_ffa979">#ffa979</color>
+    <color name="c_536ba1">#536ba1</color>
+    <color name="c_ffccff">#ffccff</color>
 </resources>
