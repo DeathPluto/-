@@ -6,21 +6,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class BaseFragment extends Fragment implements View.OnClickListener{
-	protected View rootView;
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		initView(inflater, container);
-		return rootView;
-	}
+public abstract class BaseFragment extends Fragment implements View.OnClickListener {
+    protected View rootView;
 
-	protected abstract void initView(LayoutInflater inflater, ViewGroup container);
-	
-	public void initData(){}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        initView(inflater, container);
+        setListeners();
+        return rootView;
+    }
 
-	@Override
-	public abstract void onClick(View v);
-	
-	
+    protected abstract void initView(LayoutInflater inflater, ViewGroup container);
+
+    protected abstract void setListeners();
+
+    public void initData() {
+    }
+
+    @Override
+    public abstract void onClick(View v);
+
+
 }
