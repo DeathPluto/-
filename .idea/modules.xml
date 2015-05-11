@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EasyWorkDivision.iml" filepath="$PROJECT_DIR$/EasyWorkDivision.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Eazy.iml" filepath="$PROJECT_DIR$/Eazy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/MaterialDesign/MaterialDesign.iml" filepath="$PROJECT_DIR$/MaterialDesign/MaterialDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pull2RefreshLib/Pull2RefreshLib.iml" filepath="$PROJECT_DIR$/Pull2RefreshLib/Pull2RefreshLib.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
