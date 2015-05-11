@@ -11,7 +11,7 @@ import android.view.View;
 import com.zyxf.eazyworkdivision.application.HalcyonApplication;
 
 /**
- * UI界面相关工具�?
+ * UI界面相关工具类
  */
 public class UIUtils {
     /**
@@ -49,7 +49,7 @@ public class UIUtils {
     }
 
     /**
-     * 获取主线程的上下�?
+     * 获取主线程的上下文
      *
      * @return
      */

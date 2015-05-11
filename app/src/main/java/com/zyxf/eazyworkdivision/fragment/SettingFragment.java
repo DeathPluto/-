@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zyxf.eazyworkdivision.R;
 import com.zyxf.eazyworkdivision.base.BaseFragment;
 
 /**
@@ -19,7 +20,7 @@ public class SettingFragment extends BaseFragment {
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container) {
-
+        rootView = inflater.inflate(R.layout.fragment_setting,container,false);
     }
 
     @Override
