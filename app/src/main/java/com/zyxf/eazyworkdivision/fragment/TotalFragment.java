@@ -6,6 +6,10 @@ import android.view.ViewGroup;
 
 import com.zyxf.eazyworkdivision.R;
 import com.zyxf.eazyworkdivision.base.BaseFragment;
+import com.zyxf.eazyworkdivision.config.Constants;
+
+import java.util.Calendar;
+import java.util.TimeZone;
 
 /**
  * Title :       com.zyxf.eazyworkdivision.fragment                                     <br/>
@@ -17,6 +21,7 @@ import com.zyxf.eazyworkdivision.base.BaseFragment;
  * Description:  todo
  */
 public class TotalFragment extends BaseFragment {
+    protected Calendar mCalendar = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container) {
@@ -25,11 +30,23 @@ public class TotalFragment extends BaseFragment {
 
     @Override
     protected void setListeners() {
-
+        rootView.findViewById(R.id.tv_start_date).setOnClickListener(this);
+        rootView.findViewById(R.id.tv_end_date).setOnClickListener(this);
+        rootView.findViewById(R.id.btn_search).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tv_start_date:
 
+                break;
+            case R.id.tv_end_date:
+
+                break;
+            case R.id.btn_search:
+
+                break;
+        }
     }
 }

@@ -103,6 +103,7 @@
         android:layout_height="wrap_content">
 
         <RelativeLayout
+            android:id="@+id/rl_start"
             android:padding="6dp"
             android:background="@drawable/bg_total_item_round_corner"
             android:layout_width="0dp"
@@ -115,6 +116,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_start_date"
                 android:text="2015/5"
                 android:textColor="#ccc"
                 android:layout_alignParentRight="true"
@@ -133,6 +135,7 @@
             android:layout_height="wrap_content" />
 
         <RelativeLayout
+            android:id="@+id/rl_end"
             android:padding="6dp"
             android:background="@drawable/bg_total_item_round_corner"
             android:layout_width="0dp"
@@ -145,6 +148,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/tv_end_date"
                 android:text="2015/8"
                 android:textColor="#ccc"
                 android:layout_alignParentRight="true"
