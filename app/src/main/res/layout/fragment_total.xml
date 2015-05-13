@@ -85,17 +85,6 @@
             style="@style/TotalItem.TextView" />
     </RelativeLayout>
 
-    <com.gc.materialdesign.views.ButtonRectangle
-        android:id="@+id/btn_search"
-        android:text="开始搜索"
-        android:layout_marginTop="12dp"
-        android:textSize="15sp"
-        android:clickable="true"
-        android:gravity="center"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="42dp" />
-
     <LinearLayout
         android:layout_marginTop="12dp"
         android:orientation="horizontal"
@@ -156,7 +145,16 @@
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 
-
     </LinearLayout>
 
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/btn_search"
+        android:text="查询"
+        android:layout_marginTop="12dp"
+        android:textSize="15sp"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp" />
 </LinearLayout>
