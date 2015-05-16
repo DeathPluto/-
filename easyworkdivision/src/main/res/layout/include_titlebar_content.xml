@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/c_8FC400"
+    android:layout_height="0dp"
+    android:layout_weight="60">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:text="登陆"
+        android:textColor="@color/c_F0FADA"
+        android:gravity="center"
+        android:textSize="@dimen/largest_textsize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

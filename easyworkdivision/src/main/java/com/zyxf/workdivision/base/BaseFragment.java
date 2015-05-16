@@ -1,4 +1,4 @@
-package com.zyxf.eazyworkdivision.base;
+package com.zyxf.workdivision.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

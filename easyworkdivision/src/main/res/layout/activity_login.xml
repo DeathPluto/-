@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="830">
+
+    <include layout="@layout/include_titlebar_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40" />
+
+    <ImageView
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="110" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <LinearLayout
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView style="@style/LoginUserAreaTextView" />
+
+        <EditText style="@style/LoginUserAreaEditText" />
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40" />
+
+    <LinearLayout
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView style="@style/LoginUserAreaTextView" />
+
+        <EditText style="@style/LoginUserAreaEditText" />
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40" />
+
+    <LinearLayout
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView style="@style/LoginUserAreaTextView" />
+
+        <TextView style="@style/LoginUserAreaEditText" />
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="170" />
+
+    <LinearLayout
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_weight="100"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_introduction"
+            style="@style/LoginFuncLinearLayout">
+
+            <ImageView
+                android:src="@drawable/ic_launcher"
+                style="@style/LoginFuncImageView" />
+
+            <TextView
+                android:text="产品介绍"
+                style="@style/LoginLabel" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_contact_us"
+            style="@style/LoginFuncLinearLayout">
+
+            <ImageView
+                android:src="@drawable/ic_launcher"
+                style="@style/LoginFuncImageView" />
+
+            <TextView
+                android:text="联系我们"
+                style="@style/LoginLabel" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_share"
+            style="@style/LoginFuncLinearLayout">
+
+            <ImageView
+                android:src="@drawable/ic_launcher"
+                style="@style/LoginFuncImageView" />
+
+            <TextView
+                android:text="推荐好友"
+                style="@style/LoginLabel" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_shop"
+            style="@style/LoginFuncLinearLayout">
+
+            <ImageView
+                android:src="@drawable/ic_launcher"
+                style="@style/LoginFuncImageView" />
+
+            <TextView
+                android:text="工友商城"
+                style="@style/LoginLabel" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+</LinearLayout>

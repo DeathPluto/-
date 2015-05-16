@@ -1,0 +1,61 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    <style name="LoginFuncLinearLayout">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">80</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+
+    <style name="LoginFuncImageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">8</item>
+    </style>
+
+    <style name="LoginLabel">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/smallest_textsize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">2</item>
+        <item name="android:layout_height">0dp</item>
+    </style>
+
+    <style name="LoginUserAreaTextView">
+        <item name="android:layout_weight">140</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/c_F0FADA</item>
+    </style>
+
+    <style name="LoginUserAreaEditText">
+        <item name="android:layout_weight">310</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="LoginFindPwdButton">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">140</item>
+        <item name="android:textColor">@color/c_F0FADA</item>
+    </style>
+
+    <style name="LoginSubmitButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">310</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/c_F0FADA</item>
+    </style>
+</resources>
