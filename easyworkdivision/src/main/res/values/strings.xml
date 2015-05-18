@@ -5,4 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="company_name">公司名称:深圳兆云兴方建筑技术有限公司</string>
+    <string name="company_address">公司地址:深圳市福田区车公庙泰然工贸园211栋415室</string>
+    <string name="company_tel">联系电话:0755-xxxxxxxx</string>
+    <string name="company_slogan">专注于考勤技术,做工地现场管理专家!</string>
+
+
 </resources>

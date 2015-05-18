@@ -2,9 +2,52 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <GridView
-        android:id="@+id/gridview"
-        android:numColumns="3"
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:orientation="horizontal"
+        android:weightSum="470"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="66dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="15"
+            android:layout_height="match_parent" />
+
+        <RadioButton
+            android:drawableTop="@drawable/ic_launcher"
+            android:id="@+id/rb_checkingin_today"
+            android:text="当日考勤"
+            style="@style/MainRadioButton" />
+
+        <RadioButton
+            android:drawableTop="@drawable/ic_launcher"
+            android:id="@+id/rb_project_info"
+            android:text="工地工程信息"
+            style="@style/MainRadioButton" />
+
+        <RadioButton
+            android:drawableTop="@drawable/ic_launcher"
+            android:id="@+id/rb_checkingin_week"
+            android:text="本周考勤"
+            style="@style/MainRadioButton" />
+
+        <RadioButton
+            android:drawableTop="@drawable/ic_launcher"
+            android:id="@+id/rb_more"
+            android:text="更多"
+            style="@style/MainRadioButton" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="15"
+            android:layout_height="match_parent" />
+    </RadioGroup>
+
+    <ViewPager
+        android:id="@+id/viewpager"
+        android:layout_above="@id/radiogroup"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

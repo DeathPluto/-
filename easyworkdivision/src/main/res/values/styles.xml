@@ -58,4 +58,33 @@
         <item name="android:clickable">true</item>
         <item name="android:textColor">@color/c_F0FADA</item>
     </style>
+
+    <style name="MainRadioButton">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">110</item>
+    </style>
+
+    <style name="ContactUsTextView">
+        <item name="android:textSize">@dimen/normal_textsize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="MoreTextView">
+        <item name="android:clickable">true</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:drawableRight">@drawable/icon_more_arrow_right</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">60</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/larger_textsize</item>
+    </style>
 </resources>

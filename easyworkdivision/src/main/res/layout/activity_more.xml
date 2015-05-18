@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="830"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_titlebar_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:text="我的信息"
+        style="@style/MoreTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <TextView
+        android:id="@+id/tv_production"
+        android:text="产品介绍"
+        style="@style/MoreTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <TextView
+        android:text="工友商城"
+        style="@style/MoreTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:text="联系我们"
+        style="@style/MoreTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <TextView
+        android:text="版本检测"
+        android:drawableRight="@null"
+        style="@style/MoreTextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <com.gc.materialdesign.views.ButtonRectangle
+        android:id="@+id/btn_submit"
+        android:background="@color/warning_orange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注销登陆" />
+
+</LinearLayout>

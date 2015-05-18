@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="main_function">
+        <item>实时考勤</item>
+        <item>周考勤</item>
+        <item>月考勤</item>
+        <item>产品介绍</item>
+        <item>联系我们</item>
+        <item>推荐好友</item>
+        <item>密码修改</item>
+        <item>工地工程简介</item>
+    </array>
+    <array name="additional_function">
+        <item>反馈</item>
+        <item>链接入口</item>
+        <item>工友商城</item>
+    </array>
+</resources>

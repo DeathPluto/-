@@ -1,16 +1,38 @@
 package com.zyxf.workdivision;
 
-import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioGroup;
+
+import com.zyxf.workdivision.base.BaseActivity;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+    private ViewPager mViewPager;
+    private RadioGroup mRadioGroup;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView() {
         setContentView(R.layout.activity_main);
+
+        mViewPager = (ViewPager) this.findViewById(R.id.viewpager);
+        mRadioGroup = (RadioGroup) this.findViewById(R.id.radiogroup);
     }
 
+    @Override
+    protected void setListeners() {
+        mRadioGroup.setOnCheckedChangeListener(this);
+    }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+
+        }
+    }
 }

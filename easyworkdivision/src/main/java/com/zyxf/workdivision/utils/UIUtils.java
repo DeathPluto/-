@@ -8,7 +8,8 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.zyxf.eazyworkdivision.application.HalcyonApplication;
+import com.zyxf.workdivision.application.HalcyonApplication;
+
 
 /**
  * UI界面相关工具类
