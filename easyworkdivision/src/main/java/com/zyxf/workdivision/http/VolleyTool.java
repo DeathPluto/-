@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley;
 public class VolleyTool {
     private static VolleyTool instance;
     private RequestQueue queue;
-    private Context context;
 
     private VolleyTool(Context context) {
         queue = Volley.newRequestQueue(context);

@@ -33,6 +33,7 @@
     <style name="LoginUserAreaTextView">
         <item name="android:layout_weight">140</item>
         <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textColor">@color/c_F0FADA</item>
     </style>
@@ -41,6 +42,7 @@
         <item name="android:layout_weight">310</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">6dp</item>
     </style>
 
     <style name="LoginFindPwdButton">

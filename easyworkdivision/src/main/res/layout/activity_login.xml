@@ -36,37 +36,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent" />
 
-        <TextView style="@style/LoginUserAreaTextView" />
+        <TextView
+            android:text="账号"
+            android:background="@drawable/bg_login_textview_account"
+            style="@style/LoginUserAreaTextView" />
 
-        <EditText style="@style/LoginUserAreaEditText" />
-
-        <View
-            android:layout_weight="10"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="40" />
-
-    <LinearLayout
-        android:weightSum="470"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="60">
-
-        <View
-            android:layout_weight="10"
-            android:layout_width="0dp"
-            android:layout_height="match_parent" />
-
-        <TextView style="@style/LoginUserAreaTextView" />
-
-        <EditText style="@style/LoginUserAreaEditText" />
+        <EditText
+            android:id="@+id/et_account"
+            android:background="@drawable/bg_login_edittext_account"
+            style="@style/LoginUserAreaEditText" />
 
         <View
             android:layout_weight="10"
@@ -92,9 +70,53 @@
             android:layout_width="0dp"
             android:layout_height="match_parent" />
 
-        <TextView style="@style/LoginUserAreaTextView" />
+        <TextView
+            android:text="密码"
+            android:background="@drawable/bg_login_textview_password"
+            style="@style/LoginUserAreaTextView" />
 
-        <TextView style="@style/LoginUserAreaEditText" />
+        <EditText
+            android:id="@+id/et_password"
+            android:background="@drawable/bg_login_edittext_password"
+            style="@style/LoginUserAreaEditText" />
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="40" />
+
+    <LinearLayout
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <View
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_find_pwd"
+            android:text="找回密码"
+            android:background="@drawable/bg_login_textview_findpwd"
+            style="@style/LoginUserAreaTextView" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:text="登陆"
+            android:textColor="@color/c_F0FADA"
+            android:gravity="center"
+            android:background="@drawable/bg_login_textview_login"
+            style="@style/LoginUserAreaEditText" />
 
         <View
             android:layout_weight="10"

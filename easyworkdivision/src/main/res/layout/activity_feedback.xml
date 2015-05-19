@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="830"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/include_titlebar_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <EditText
+        android:paddingLeft="12dp"
+        android:id="@+id/et_theme"
+        android:singleLine="true"
+        android:maxLength="@integer/feedback_theme_limit"
+        android:hint="主题:"
+        android:textSize="@dimen/normal_textsize"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="48" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="22" />
+
+    <EditText
+        android:paddingLeft="12dp"
+        android:id="@+id/et_content"
+        android:hint="详细内容:"
+        android:lineSpacingMultiplier="1.2"
+        android:scaleX="1.05"
+        android:gravity="top|left"
+        android:padding="6dp"
+        android:textSize="@dimen/normal_textsize"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="480" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
+
+    <LinearLayout
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:weightSum="470"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/btn_clear"
+            android:text="清空"
+            android:background="@color/c_8FC400"
+            android:textSize="@dimen/normal_textsize"
+            android:layout_width="0dp"
+            android:layout_weight="100"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="270"
+            android:layout_height="match_parent" />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/btn_submit"
+            android:text="提交"
+            android:layout_gravity="right"
+            android:background="@color/c_8FC400"
+            android:textSize="@dimen/normal_textsize"
+            android:layout_width="0dp"
+            android:layout_weight="100"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.zyxf.workdivision.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,5 +32,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public abstract void onClick(View v);
 
+
+    protected void startActivity(Class activityClass) {
+        Intent intent = new Intent(getActivity(), activityClass);
+        startActivity(intent);
+    }
 
 }
