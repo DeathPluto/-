@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
+import com.zyxf.workdivision.bean.User;
+import com.zyxf.workdivision.bean.response.Check;
 import com.zyxf.workdivision.utils.LogUtils;
 
 import java.io.File;
@@ -39,9 +41,16 @@ public class HalcyonApplication extends Application {
     private static int mMainThreadId;
     private static HandlerCallback mHandlerCallback;
 
+    private static String cookie;
+
+    private static User mUser;
+
+    public static Check mCheck;
+
     public interface HandlerCallback {
         public void handleMessage(Message msg);
     }
+
 
     @Override
     public void onCreate() {
@@ -60,6 +69,22 @@ public class HalcyonApplication extends Application {
         super.onCreate();
     }
 
+
+    public static Check getCheck() {
+        return mCheck;
+    }
+
+    public static void setCheck(Check mCheck) {
+        HalcyonApplication.mCheck = mCheck;
+    }
+
+    public static String getCookie() {
+        return cookie;
+    }
+
+    public static void setCookie(String cookie) {
+        HalcyonApplication.cookie = cookie;
+    }
 
     public static HalcyonApplication getApplication() {
         return mContext;

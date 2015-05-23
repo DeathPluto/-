@@ -55,7 +55,18 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         switch (checkedId) {
-
+            case R.id.rb_checkingin_today:
+                startActivity(TimeCheckinginActivity.class);
+                break;
+            case R.id.rb_project_info:
+                startActivity(ProjectActivity.class);
+                break;
+            case R.id.rb_checkingin_week:
+                startActivity(WeekCheckinginActivity.class);
+                break;
+            case R.id.rb_more:
+                startActivity(MoreActivity.class);
+                break;
         }
     }
 

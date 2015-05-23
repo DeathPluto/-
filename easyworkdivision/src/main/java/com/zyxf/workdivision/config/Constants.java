@@ -7,4 +7,11 @@ public interface Constants {
 
     public static final String TIMEZONE = "GMT+8";
 
+    public static final String COOKIE = "Cookie";
+
+    public static final String HAS_LOGIN = "HasLogin";
+
+    public static final String LOGINED_USER = "LoginedUser";
+
+    public static final String CHECK = "Check";
 }

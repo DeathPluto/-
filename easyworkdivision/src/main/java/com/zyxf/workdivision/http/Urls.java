@@ -13,4 +13,8 @@ public class Urls {
     //登出
     public static final String URL_LOGOUT = "http://yigongfen.cn/auth/logout";
 
+    public static final String URL_CHECK_LOGIN = "http://yigongfen.cn/auth/check";
+
+    //考勤记录搜索
+    public static final String URL_SEARCH_CHECKINGIN = "http://yigongfen.cn/attendance/search";
 }

@@ -9,4 +9,22 @@
         android:onClick="leaderLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:text="worker登陆"
+        android:onClick="workerLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="检查登陆"
+        android:onClick="checkLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:text="实时考勤"
+        android:onClick="timeCheckingin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -6,14 +6,27 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.android.volley.RequestQueue;
+import com.zyxf.workdivision.application.HalcyonApplication;
+import com.zyxf.workdivision.http.VolleyTool;
+import com.zyxf.workdivision.utils.ACache;
+
 public abstract class BaseActivity extends FragmentActivity implements OnClickListener {
+    protected VolleyTool mVolley;
+    protected RequestQueue mQueue;
+    protected ACache mCache;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mVolley = VolleyTool.getInstance(getApplicationContext());
+        mQueue = mVolley.getQueue();
+        mCache = ACache.get(HalcyonApplication.getApplication());
         initView();
         setListeners();
         initAfterSetListeners();
+
+
     }
 
     protected void initAfterSetListeners() {

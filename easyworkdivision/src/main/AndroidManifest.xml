@@ -17,6 +17,7 @@
         </activity>
 
         <activity
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:name=".LoginActivity">
             <intent-filter>
@@ -50,6 +51,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".LinkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MoreActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".test.TestActivity"
