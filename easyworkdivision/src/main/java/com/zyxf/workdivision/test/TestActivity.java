@@ -24,6 +24,7 @@ import com.zyxf.workdivision.utils.LogUtils;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
@@ -186,6 +187,17 @@ public class TestActivity extends BaseActivity {
             }
         };
         mQueue.add(request);
+    }
+
+    public void timestamp(View v) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        todayStart.set(Calendar.HOUR, 0);
+        todayStart.set(Calendar.MINUTE, 0);
+        todayStart.set(Calendar.SECOND, 0);
+        todayStart.set(Calendar.MILLISECOND, 0);
+
+        LogUtils.i(sdf.format(todayStart.getTime()) + "\n" + sdf.format(new Date()));
     }
 
 

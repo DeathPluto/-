@@ -10,6 +10,10 @@ import java.io.Serializable;
  * user, 未登录为 null，已登录为 JSON 对象，包括该用户的各种属性
  */
 public class Check implements Serializable {
+    public static final String TYPE_LEADER = "leader";
+    public static final String TYPE_WORKER = "worker";
+
+
     public boolean logined;
     public String type;
     public User user;

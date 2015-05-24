@@ -1,5 +1,7 @@
 package com.zyxf.workdivision.fragment;
 
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,14 @@ public class MainFragment extends BaseFragment {
         }
 
         mGridView = (GridView) rootView.findViewById(R.id.gridview);
+
+        Display display = getActivity().getWindowManager().getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        display.getMetrics(metrics);
+
+        int screenHeight = metrics.heightPixels;
+
+        mGridView.setVerticalSpacing((int) (screenHeight * 0.08));
         adapter = new GridAdapter(list);
         mGridView.setAdapter(adapter);
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

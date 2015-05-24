@@ -14,4 +14,18 @@ public class Checkingin implements Serializable {
     public String name;
     public String comment;
     public String serial_number;
+
+    @Override
+    public String toString() {
+        return "Checkingin{" +
+                "attendance_timestamp='" + attendance_timestamp + '\'' +
+                ", device_id='" + device_id + '\'' +
+                ", id='" + id + '\'' +
+                ", id_string='" + id_string + '\'' +
+                ", department='" + department + '\'' +
+                ", name='" + name + '\'' +
+                ", comment='" + comment + '\'' +
+                ", serial_number='" + serial_number + '\'' +
+                '}';
+    }
 }

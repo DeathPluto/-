@@ -90,6 +90,7 @@
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.2" level="project" />
     <orderEntry type="module" module-name="MaterialDesign" exported="" />
+    <orderEntry type="module" module-name="social_sdk_library_project" exported="" />
     <orderEntry type="module" module-name="MPChartLib" exported="" />
     <orderEntry type="module" module-name="Pull2RefreshLib" exported="" />
   </component>

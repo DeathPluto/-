@@ -11,7 +11,5 @@ public interface Constants {
 
     public static final String HAS_LOGIN = "HasLogin";
 
-    public static final String LOGINED_USER = "LoginedUser";
-
     public static final String CHECK = "Check";
 }

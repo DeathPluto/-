@@ -1,5 +1,6 @@
 package com.zyxf.workdivision;
 
+import android.app.Dialog;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ import com.zyxf.workdivision.application.HalcyonApplication;
 import com.zyxf.workdivision.base.BaseActivity;
 import com.zyxf.workdivision.config.Constants;
 import com.zyxf.workdivision.http.Urls;
+import com.zyxf.workdivision.manager.DialogManager;
 import com.zyxf.workdivision.utils.LogUtils;
 import com.zyxf.workdivision.utils.PreferenceUtils;
 
@@ -24,6 +26,7 @@ import java.util.Map;
  */
 public class MoreActivity extends BaseActivity {
     private TextView titleTv;
+    private Dialog progressDialog;
 
     @Override
     protected void initView() {
@@ -50,12 +53,13 @@ public class MoreActivity extends BaseActivity {
     }
 
     private void logout() {
+        progressDialog = DialogManager.showProgressDialog(this, "登出中...");
         StringRequest request = new StringRequest(Request.Method.GET, Urls.URL_LOGOUT, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 PreferenceUtils.putBoolean(getApplicationContext(), Constants.HAS_LOGIN, false);
-                mCache.put(Constants.LOGINED_USER, "");
                 mCache.put(Constants.CHECK, "");
+                progressDialog.dismiss();
                 startActivity(LoginActivity.class);
                 finish();
             }
@@ -65,7 +69,9 @@ public class MoreActivity extends BaseActivity {
                 if (volleyError != null) {
                     LogUtils.i("登出失败\n" + volleyError.toString());
                 }
+                progressDialog.dismiss();
                 Toast.makeText(HalcyonApplication.getApplication(), "登出失败!", Toast.LENGTH_SHORT).show();
+
             }
         }) {
             @Override

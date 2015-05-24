@@ -15,4 +15,22 @@
         <item>链接入口</item>
         <item>工友商城</item>
     </array>
+
+    <array name="departments">
+        <item>建筑单位管理人员</item>
+        <item>监理单位管理人员</item>
+        <item>施工单位管理人员</item>
+        <item>其他单位管理人员</item>
+        <item>混泥土班组</item>
+        <item>土木班组</item>
+        <item>钢筋班组</item>
+        <item>脚手架班组</item>
+        <item>施工机械组</item>
+        <item>水暖电班组</item>
+        <item>装饰班组</item>
+        <item>基础施工班组</item>
+        <item>支护施工班组</item>
+        <item>其他进场人员登记备案</item>
+        <item>施工机械班组</item>
+    </array>
 </resources>

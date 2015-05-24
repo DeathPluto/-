@@ -1,3 +1,4 @@
 include ':app', ':MaterialDesign', ':MPChartLib', ':easyworkdivision'
 include ':Pull2RefreshLib'
 include ':googleDateTimePickers'
+include ':social_sdk_library_project'

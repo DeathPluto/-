@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/easyworkdivision/easyworkdivision.iml" filepath="$PROJECT_DIR$/easyworkdivision/easyworkdivision.iml" />
       <module fileurl="file://$PROJECT_DIR$/googleDateTimePickers/googleDateTimePickers.iml" filepath="$PROJECT_DIR$/googleDateTimePickers/googleDateTimePickers.iml" />
+      <module fileurl="file://$PROJECT_DIR$/social_sdk_library_project/social_sdk_library_project.iml" filepath="$PROJECT_DIR$/social_sdk_library_project/social_sdk_library_project.iml" />
     </modules>
   </component>
 </project>

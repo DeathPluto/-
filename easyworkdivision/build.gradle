@@ -27,4 +27,5 @@ dependencies {
     compile files('libs/volley_lib.jar')
     compile files('libs/gson-2.2.3.jar')
     compile project(':Pull2RefreshLib')
+    compile project(':social_sdk_library_project')
 }
