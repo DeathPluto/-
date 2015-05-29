@@ -53,10 +53,9 @@ import java.util.TimeZone;
  * Created by DeathPluto on 2015/5/19.
  */
 public class WeekCheckinginActivity extends BaseActivity {
-    private Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-    private Calendar mCalendar = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
     private TextView titleTv;
     private ButtonFlat numberBtn;
+    private ButtonFlat nextBtn;
     private Check mCheck;
     private boolean isLeader = false;
     private BarChart mChart;
@@ -66,15 +65,22 @@ public class WeekCheckinginActivity extends BaseActivity {
     private CheckinginForm checkinginForm;
     private Typeface mTf;
     private Dialog progressDialog;
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
     private TextView emptyTv;
+    private static int currentPosition = 0;
+    private static final long WEEK_MILLI = 1000 * 60 * 60 * 24 * 7;
+    private static long mondayMilli;
 
 
     @Override
     protected void initView() {
         setContentView(R.layout.activity_checkingin_week);
+
+        mondayMilli = getMondayMilli();
+
         titleTv = (TextView) this.findViewById(R.id.tv_title);
         numberBtn = (ButtonFlat) this.findViewById(R.id.btn_num);
+        nextBtn = (ButtonFlat) this.findViewById(R.id.btn_next);
         mChart = (BarChart) this.findViewById(R.id.chart);
         mListView = (PullToRefreshListView) this.findViewById(R.id.listview);
         emptyTv = (TextView) this.findViewById(R.id.tv_empty);
@@ -93,19 +99,34 @@ public class WeekCheckinginActivity extends BaseActivity {
             mListView.setVisibility(View.VISIBLE);
             mChart.setVisibility(View.GONE);
         }
-        numberBtn.setText("本月第" + c.get(Calendar.WEEK_OF_MONTH) + "周");
+        nextBtn.setEnabled(false);
         titleTv.setText("周考勤");
     }
 
     @Override
     protected void setListeners() {
         numberBtn.setOnClickListener(this);
+        nextBtn.setOnClickListener(this);
         this.findViewById(R.id.btn_prev).setOnClickListener(this);
-        this.findViewById(R.id.btn_next).setOnClickListener(this);
+    }
+
+    private long getMondayMilli() {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY); //获取本周一的日期
+        return cal.getTimeInMillis();
     }
 
     @Override
     protected void initAfterSetListeners() {
+        if (currentPosition == 0) {
+            numberBtn.setText("本周");
+            nextBtn.setEnabled(false);
+        } else {
+            Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+            c.setTimeInMillis(mondayMilli + WEEK_MILLI * currentPosition);
+            numberBtn.setText((c.get(Calendar.MONTH) + 1) + "月第" + c.get(Calendar.WEEK_OF_MONTH) + "周");
+            nextBtn.setEnabled(true);
+        }
         progressDialog = DialogManager.showProgressDialog(this, "加载数据中...");
         Check check = (Check) mCache.getAsObject(Constants.CHECK);
         if (isLeader) {
@@ -289,16 +310,20 @@ public class WeekCheckinginActivity extends BaseActivity {
     }
 
     private String getStartTime() {
-        Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-        todayStart.set(Calendar.HOUR, 0);
-        todayStart.set(Calendar.MINUTE, 0);
-        todayStart.set(Calendar.SECOND, 0);
-        todayStart.set(Calendar.MILLISECOND, 0);
-        return sdf.format(todayStart.getTime());
+        Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        c.setTimeInMillis(mondayMilli + WEEK_MILLI * currentPosition);
+        return sdf.format(c.getTime());
     }
 
     private String getEndTime() {
-        return sdf.format(new Date());
+        if (currentPosition == 0) {
+            return sdf.format(new Date());
+        } else {
+            Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+            c.setTimeInMillis(mondayMilli + WEEK_MILLI * (Math.abs(currentPosition) - 1));
+            return sdf.format(c.getTime());
+        }
+
     }
 
 
@@ -343,10 +368,12 @@ public class WeekCheckinginActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_prev:
-
+                currentPosition--;
+                initAfterSetListeners();
                 break;
             case R.id.btn_next:
-
+                currentPosition++;
+                initAfterSetListeners();
                 break;
             case R.id.btn_num:
 

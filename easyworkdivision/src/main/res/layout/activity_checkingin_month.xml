@@ -21,7 +21,7 @@
 
         <com.gc.materialdesign.views.ButtonFlat
             android:id="@+id/btn_prev"
-            android:text="上周"
+            android:text="上月"
             android:background="@color/c_999999"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -34,7 +34,7 @@
 
         <com.gc.materialdesign.views.ButtonFlat
             android:id="@+id/btn_num"
-            android:text="本月第N周"
+            android:text="本月"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="8" />
@@ -46,7 +46,7 @@
 
         <com.gc.materialdesign.views.ButtonFlat
             android:id="@+id/btn_next"
-            android:text="本周"
+            android:text="下月"
             android:background="@color/c_999999"
             android:layout_width="0dp"
             android:layout_height="match_parent"

@@ -1,6 +1,7 @@
 package com.zyxf.workdivision.test;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
@@ -52,9 +53,10 @@ public class TestActivity extends BaseActivity {
 
     public void firstDayOfWeek(View v) {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY); //获取本周一的日期
         LogUtils.i("********得到本周一的日期*******" + df.format(cal.getTime()));
+        Toast.makeText(this, df.format(cal.getTime()), Toast.LENGTH_SHORT).show();
     }
 
     public void firstDayOfMonth(View v) {
