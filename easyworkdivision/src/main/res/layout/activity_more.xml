@@ -33,6 +33,7 @@
         android:layout_weight="30" />
 
     <TextView
+        android:id="@+id/tv_shop"
         android:text="工友商城"
         style="@style/MoreTextView" />
 
@@ -41,6 +42,7 @@
         android:layout_height="1dp" />
 
     <TextView
+        android:id="@+id/tv_contact"
         android:text="联系我们"
         style="@style/MoreTextView" />
 
@@ -49,6 +51,7 @@
         android:layout_height="1dp" />
 
     <TextView
+        android:id="@+id/tv_version"
         android:text="版本检测"
         android:drawableRight="@null"
         style="@style/MoreTextView" />

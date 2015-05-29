@@ -1,8 +1,6 @@
 package com.zyxf.workdivision;
 
 import android.app.Dialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -31,6 +29,7 @@ import com.zyxf.workdivision.bean.response.Check;
 import com.zyxf.workdivision.config.Constants;
 import com.zyxf.workdivision.http.Urls;
 import com.zyxf.workdivision.manager.DialogManager;
+import com.zyxf.workdivision.utils.BrowserUtils;
 import com.zyxf.workdivision.utils.LogUtils;
 import com.zyxf.workdivision.utils.PreferenceUtils;
 
@@ -169,9 +168,7 @@ public class LoginActivity extends BaseActivity {
                 mController.openShare(this, false);
                 break;
             case R.id.ll_shop:
-                Uri uri = Uri.parse("http://www.jd.com/");
-                Intent it = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(it);
+                BrowserUtils.openWebSite(getApplicationContext(), Urls.URL_JD);
                 break;
             case R.id.tv_login:
                 login();
@@ -238,11 +235,8 @@ public class LoginActivity extends BaseActivity {
         StringRequest leaderRequest = new StringRequest(Request.Method.POST, Urls.URL_LOGIN_LEADER, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
-                startActivity(MainActivity.class);
-                finish();
-                if (loginProgressDialog.isShowing()) {
-                    loginProgressDialog.dismiss();
-                }
+                passwordEt.setText("");
+                jumpAfterCheck();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -250,6 +244,7 @@ public class LoginActivity extends BaseActivity {
                 if (volleyError != null) {
                     LogUtils.i("workerRequest\n" + volleyError.toString());
                 }
+                passwordEt.setText("");
                 if (loginProgressDialog.isShowing()) {
                     loginProgressDialog.dismiss();
                 }
@@ -325,7 +320,6 @@ public class LoginActivity extends BaseActivity {
 
         };
         mQueue.add(request);
-
     }
 
 

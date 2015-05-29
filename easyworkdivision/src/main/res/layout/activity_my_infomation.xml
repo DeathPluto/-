@@ -7,13 +7,14 @@
 
     <include layout="@layout/include_titlebar_content" />
 
-
-    <View style="@style/ProjectInfoItem" />
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="120" />
 
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="项目中文名称:"
+            android:text="姓名"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
@@ -28,13 +29,40 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="项目英文名称:"
+            android:text="性别:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:text="民族:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <TextView
+            android:id="@+id/tv_ethnic"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="4" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="出生"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
 
         <TextView
-            android:id="@+id/tv_name_en"
+            android:id="@+id/tv_birthdate"
             style="@style/ProjectInfoTextView.Content" />
     </LinearLayout>
 
@@ -43,34 +71,7 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="所在国家:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_country"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-
-        <View style="@style/ProjectInfoTextView.Holder" />
-
-        <TextView
-            android:text="所在城市:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_city"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-    </LinearLayout>
-
-    <View style="@style/ProjectInfoItem" />
-
-    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
-
-        <TextView
-            android:text="项目地址:"
+            android:text="住址"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
@@ -85,72 +86,16 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="负责人:"
+            android:text="身份证"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
 
         <TextView
-            android:id="@+id/tv_person"
+            android:id="@+id/tv_id"
             style="@style/ProjectInfoTextView.Content" />
     </LinearLayout>
 
     <View style="@style/ProjectInfoItem" />
 
-    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
-
-        <TextView
-            android:text="传真号码:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_fax"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-
-        <View style="@style/ProjectInfoTextView.Holder" />
-
-        <TextView
-            android:text="邮政编码:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_post"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-    </LinearLayout>
-
-    <View style="@style/ProjectInfoItem" />
-
-    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
-
-        <TextView
-            android:text="电话一:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_phone_1"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-
-        <View style="@style/ProjectInfoTextView.Holder" />
-
-        <TextView
-            android:text="电话二:"
-            style="@style/ProjectInfoTextView.Label"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tv_phone_2"
-            style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
-
-    </LinearLayout>
-
-    <View
-        style="@style/ProjectInfoItem"
-        android:layout_weight="70" />
 </LinearLayout>

@@ -3,7 +3,6 @@ package com.zyxf.workdivision;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFlat;
 import com.zyxf.workdivision.base.BaseActivity;
@@ -51,7 +50,8 @@ public class FeedbackActivity extends BaseActivity {
 
     private void submit() {
         //TODO 调用反馈信息接口
-        Toast.makeText(this, "建设中...", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "建设中...", Toast.LENGTH_SHORT).show();
+        clear();
     }
 
     private void clear() {

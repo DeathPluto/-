@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -17,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener, ViewPager.OnPageChangeListener {
     private ViewPager mViewPager;
     private RadioGroup mRadioGroup;
     private List<BaseFragment> fragmentList;
     private SlideAdapter adapter;
     private TextView titleTv;
+    private ImageView dotIv1;
+    private ImageView dotIv2;
 
     @Override
     protected void initView() {
@@ -30,6 +33,8 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         fragmentList = new ArrayList<>();
 
+        dotIv1 = (ImageView) this.findViewById(R.id.iv_dot_1);
+        dotIv2 = (ImageView) this.findViewById(R.id.iv_dot_2);
         titleTv = (TextView) this.findViewById(R.id.tv_title);
         mViewPager = (ViewPager) this.findViewById(R.id.viewpager);
         mRadioGroup = (RadioGroup) this.findViewById(R.id.radiogroup);
@@ -45,6 +50,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     @Override
     protected void setListeners() {
         mRadioGroup.setOnCheckedChangeListener(this);
+        mViewPager.setOnPageChangeListener(this);
     }
 
     @Override
@@ -60,6 +66,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 break;
             case R.id.rb_project_info:
                 startActivity(ProjectActivity.class);
+//                startActivity(TestActivity.class);
                 break;
             case R.id.rb_checkingin_week:
                 startActivity(WeekCheckinginActivity.class);
@@ -68,6 +75,27 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
                 startActivity(MoreActivity.class);
                 break;
         }
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        //TODO 点动态移动效果
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        if (position == 0) {
+            dotIv1.setVisibility(View.VISIBLE);
+            dotIv2.setVisibility(View.INVISIBLE);
+        } else if (position == 1) {
+            dotIv1.setVisibility(View.INVISIBLE);
+            dotIv2.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 
     private class SlideAdapter extends FragmentPagerAdapter {

@@ -33,4 +33,16 @@
         android:onClick="timestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="firstDayOfWeek"
+        android:text="本周第一天"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:onClick="firstDayOfMonth"
+        android:text="本月第一天"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

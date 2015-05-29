@@ -62,6 +62,8 @@ public class TimeCheckinginActivity extends BaseActivity {
     private CheckinginForm checkinginForm;
     private Typeface mTf;
     private Dialog progressDialog;
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private TextView emptyTv;
 
     @Override
     protected void initView() {
@@ -69,14 +71,14 @@ public class TimeCheckinginActivity extends BaseActivity {
         mChart = (BarChart) this.findViewById(R.id.chart);
         mListView = (PullToRefreshListView) this.findViewById(R.id.listview);
         titleTv = (TextView) this.findViewById(R.id.tv_title);
+        emptyTv = (TextView) this.findViewById(R.id.tv_empty);
 
         mCheck = (Check) mCache.getAsObject(Constants.CHECK);
-        if (mCheck != null) {
-            if (TextUtils.equals(mCheck.type, "leader")) {
-                isLeader = true;
-            } else {
-                isLeader = false;
-            }
+        LogUtils.i(mCheck.type);
+        if (TextUtils.equals(mCheck.type, "leader")) {
+            isLeader = true;
+        } else {
+            isLeader = false;
         }
 
         if (isLeader) {
@@ -97,9 +99,14 @@ public class TimeCheckinginActivity extends BaseActivity {
         if (isLeader) {
             initChart();
         } else {
-            adapter = new CheckinginAdapter(list);
-            LogUtils.i(list.get(0).toString());
-            mListView.setAdapter(adapter);
+            if (list == null || list.size() == 0) {
+                mListView.setVisibility(View.GONE);
+                emptyTv.setVisibility(View.VISIBLE);
+            } else {
+                adapter = new CheckinginAdapter(list);
+                mListView.setAdapter(adapter);
+            }
+
             mListView.setMode(PullToRefreshBase.Mode.PULL_FROM_END);
             mListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
                 @Override
@@ -119,6 +126,7 @@ public class TimeCheckinginActivity extends BaseActivity {
         mChart.setDrawBarShadow(false);
         mChart.setDrawValueAboveBar(true);
         mChart.setDescription("");
+        mChart.setNoDataTextDescription("无考勤记录");
         mChart.setMaxVisibleValueCount(50);
         mChart.setPinchZoom(false);
         mChart.setDrawGridBackground(false);
@@ -188,7 +196,10 @@ public class TimeCheckinginActivity extends BaseActivity {
     }
 
     private void loadMore() {
-        StringRequest request = new StringRequest(Request.Method.GET, checkinginForm.next_page_url, new Response.Listener<String>() {
+        String url = checkinginForm.next_page_url +
+                "?begin_timestamp=" + getStartTime() +
+                "&end_timestamp=" + getEndTime();
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 Gson gson = new Gson();
@@ -207,17 +218,7 @@ public class TimeCheckinginActivity extends BaseActivity {
                 Toast.makeText(getApplicationContext(), "网络异常,加载失败", Toast.LENGTH_SHORT).show();
             }
         }) {
-            private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                Check check = (Check) mCache.getAsObject(Constants.CHECK);
-                map.put("begin_timestamp", getStartTime());
-                map.put("end_timestamp", getEndTime());
-                map.put("id_strings", check.user.id_string);
-                return map;
-            }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -227,18 +228,6 @@ public class TimeCheckinginActivity extends BaseActivity {
                 return map;
             }
 
-            private String getStartTime() {
-                Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-                todayStart.set(Calendar.HOUR, 0);
-                todayStart.set(Calendar.MINUTE, 0);
-                todayStart.set(Calendar.SECOND, 0);
-                todayStart.set(Calendar.MILLISECOND, 0);
-                return sdf.format(todayStart.getTime());
-            }
-
-            private String getEndTime() {
-                return sdf.format(new Date());
-            }
         };
         mQueue.add(request);
     }
@@ -246,8 +235,12 @@ public class TimeCheckinginActivity extends BaseActivity {
     @Override
     protected void initAfterSetListeners() {
         progressDialog = DialogManager.showProgressDialog(this, "加载数据中...");
+        Check check = (Check) mCache.getAsObject(Constants.CHECK);
         if (isLeader) {
-            StringRequest request = new StringRequest(Request.Method.GET, Urls.URL_SEARCH_CHECKINGIN, new Response.Listener<String>() {
+            String url = Urls.URL_SEARCH_CHECKINGIN +
+                    "?begin_timestamp=" + getStartTime() +
+                    "&end_timestamp=" + getEndTime();
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String s) {
                     Gson gson = new Gson();
@@ -267,27 +260,12 @@ public class TimeCheckinginActivity extends BaseActivity {
                 }
             }) {
 
-                private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> map = new HashMap<>();
                     map.put("begin_timestamp", getStartTime());
                     map.put("end_timestamp", getEndTime());
                     return map;
-                }
-
-                private String getStartTime() {
-                    Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-                    todayStart.set(Calendar.HOUR, 0);
-                    todayStart.set(Calendar.MINUTE, 0);
-                    todayStart.set(Calendar.SECOND, 0);
-                    todayStart.set(Calendar.MILLISECOND, 0);
-                    return sdf.format(todayStart.getTime());
-                }
-
-                private String getEndTime() {
-                    return sdf.format(new Date());
                 }
 
                 @Override
@@ -300,7 +278,11 @@ public class TimeCheckinginActivity extends BaseActivity {
             };
             mQueue.add(request);
         } else {
-            StringRequest request = new StringRequest(Request.Method.GET, Urls.URL_SEARCH_CHECKINGIN, new Response.Listener<String>() {
+            String url = Urls.URL_SEARCH_CHECKINGIN +
+                    "?begin_timestamp=" + getStartTime() +
+                    "&end_timestamp=" + getEndTime() +
+                    "&id_strings=" + check.user.id_string;
+            StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String s) {
                     LogUtils.i(s);
@@ -320,19 +302,6 @@ public class TimeCheckinginActivity extends BaseActivity {
                     progressDialog.dismiss();
                 }
             }) {
-
-                private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> map = new HashMap<>();
-                    Check check = (Check) mCache.getAsObject(Constants.CHECK);
-                    map.put("begin_timestamp", getStartTime());
-                    map.put("end_timestamp", getEndTime());
-                    map.put("id_strings", check.user.id_string);
-                    return map;
-                }
-
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> map = new HashMap<>();
@@ -341,23 +310,24 @@ public class TimeCheckinginActivity extends BaseActivity {
                     return map;
                 }
 
-                private String getStartTime() {
-                    Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-                    todayStart.set(Calendar.HOUR, 0);
-                    todayStart.set(Calendar.MINUTE, 0);
-                    todayStart.set(Calendar.SECOND, 0);
-                    todayStart.set(Calendar.MILLISECOND, 0);
-                    return sdf.format(todayStart.getTime());
-                }
-
-                private String getEndTime() {
-                    return sdf.format(new Date());
-                }
-
             };
             mQueue.add(request);
         }
     }
+
+    private String getStartTime() {
+        Calendar todayStart = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        todayStart.set(Calendar.HOUR, 0);
+        todayStart.set(Calendar.MINUTE, 0);
+        todayStart.set(Calendar.SECOND, 0);
+        todayStart.set(Calendar.MILLISECOND, 0);
+        return sdf.format(todayStart.getTime());
+    }
+
+    private String getEndTime() {
+        return sdf.format(new Date());
+    }
+
 
     @Override
     protected void setListeners() {

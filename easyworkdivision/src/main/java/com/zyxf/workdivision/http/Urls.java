@@ -17,4 +17,12 @@ public class Urls {
 
     //考勤记录搜索
     public static final String URL_SEARCH_CHECKINGIN = "http://yigongfen.cn/attendance/search";
+    //查看一个project
+    public static final String URL_CHECK_PROJECT = "http://www.yigongfen.cn/project/1";
+
+    public static final String URL_CHECK_SINGLE_USER = "http://yigongfen.cn/worker/";
+
+
+    //京东商城
+    public static final String URL_JD = "http://www.jd.com/";
 }

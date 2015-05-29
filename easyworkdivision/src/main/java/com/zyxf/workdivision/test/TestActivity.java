@@ -50,6 +50,18 @@ public class TestActivity extends BaseActivity {
 
     }
 
+    public void firstDayOfWeek(View v) {
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY); //获取本周一的日期
+        LogUtils.i("********得到本周一的日期*******" + df.format(cal.getTime()));
+    }
+
+    public void firstDayOfMonth(View v) {
+
+    }
+
+
     public void checkLogin(View v) {
         StringRequest request = new StringRequest(Request.Method.GET, Urls.URL_CHECK_LOGIN, new Response.Listener<String>() {
             @Override

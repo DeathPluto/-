@@ -1,7 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:weightSum="830"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include layout="@layout/include_titlebar_content" />
+
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="120" />
+
+    <com.gc.materialdesign.views.ButtonFlat
+        android:id="@+id/btn_police"
+        android:text="公安部"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
+
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="30" />
+
+    <com.gc.materialdesign.views.ButtonFlat
+        android:id="@+id/btn_hm"
+        android:text="人事部"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
+
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="30" />
+
+    <com.gc.materialdesign.views.ButtonFlat
+        android:id="@+id/btn_construction"
+        android:text="建设厅"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
+
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="30" />
+
+    <com.gc.materialdesign.views.ButtonFlat
+        android:id="@+id/btn_metro"
+        android:text="铁道部"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" />
 </LinearLayout>

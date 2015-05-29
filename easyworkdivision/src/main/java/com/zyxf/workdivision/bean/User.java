@@ -31,6 +31,7 @@ public class User implements Serializable {
     public String birthday;
     public String hire_date;
     public String address;
+    public String id;
 
 
     @Override
@@ -49,6 +50,7 @@ public class User implements Serializable {
                 ", birthday='" + birthday + '\'' +
                 ", hire_date='" + hire_date + '\'' +
                 ", address='" + address + '\'' +
+                ", id='" + id + '\'' +
                 '}';
     }
 }

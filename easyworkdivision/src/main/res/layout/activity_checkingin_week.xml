@@ -1,7 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:weightSum="830"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <include layout="@layout/include_titlebar_content" />
+
+    <LinearLayout
+        android:weightSum="20"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="60">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/btn_prev"
+            android:text="上周"
+            android:background="@color/c_999999"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/btn_num"
+            android:text="本周"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/btn_next"
+            android:text="下周"
+            android:background="@color/c_999999"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8" />
+
+    <View
+        android:background="@color/c_8FC400"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2" />
+
+    <RelativeLayout
+        android:layout_weight="700"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/listview"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:gravity="center"
+            android:text="无考勤记录"
+            android:visibility="gone"
+            android:textSize="@dimen/largest_textsize"
+            android:textColor="@color/warning_orange"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
 </LinearLayout>

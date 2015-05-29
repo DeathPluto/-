@@ -24,5 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <TextView
+            android:id="@+id/tv_empty"
+            android:gravity="center"
+            android:text="无考勤记录"
+            android:visibility="gone"
+            android:textSize="@dimen/largest_textsize"
+            android:textColor="@color/warning_orange"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </LinearLayout>

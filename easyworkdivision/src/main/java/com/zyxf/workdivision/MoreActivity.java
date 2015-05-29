@@ -15,6 +15,7 @@ import com.zyxf.workdivision.base.BaseActivity;
 import com.zyxf.workdivision.config.Constants;
 import com.zyxf.workdivision.http.Urls;
 import com.zyxf.workdivision.manager.DialogManager;
+import com.zyxf.workdivision.utils.BrowserUtils;
 import com.zyxf.workdivision.utils.LogUtils;
 import com.zyxf.workdivision.utils.PreferenceUtils;
 
@@ -40,7 +41,12 @@ public class MoreActivity extends BaseActivity {
 
     @Override
     protected void setListeners() {
+        this.findViewById(R.id.tv_info).setOnClickListener(this);
         this.findViewById(R.id.btn_submit).setOnClickListener(this);
+        this.findViewById(R.id.tv_contact).setOnClickListener(this);
+        this.findViewById(R.id.tv_production).setOnClickListener(this);
+        this.findViewById(R.id.tv_shop).setOnClickListener(this);
+        this.findViewById(R.id.tv_version).setOnClickListener(this);
     }
 
     @Override
@@ -48,6 +54,21 @@ public class MoreActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.btn_submit:
                 logout();
+                break;
+            case R.id.tv_info:
+                startActivity(MyInfomationActivity.class);
+                break;
+            case R.id.tv_production:
+                startActivity(IntroduceActivity.class);
+                break;
+            case R.id.tv_shop:
+                BrowserUtils.openWebSite(getApplicationContext(), Urls.URL_JD);
+                break;
+            case R.id.tv_contact:
+                startActivity(ContactUsActivity.class);
+                break;
+            case R.id.tv_version:
+                //TODO 检查版本
                 break;
         }
     }
