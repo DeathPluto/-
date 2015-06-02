@@ -8,7 +8,8 @@ public class GridItem {
     public String name;
     public int resId;
 
-    public GridItem(String name) {
+    public GridItem(String name, int resId) {
         this.name = name;
+        this.resId = resId;
     }
 }

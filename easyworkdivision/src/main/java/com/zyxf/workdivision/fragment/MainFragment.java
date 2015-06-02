@@ -41,13 +41,17 @@ public class MainFragment extends BaseFragment {
     private GridAdapter adapter;
     private List<GridItem> list = new ArrayList<>();
     private String[] names = UIUtils.getStringArray(R.array.main_function);
+    private int[] resIds = new int[]{
+            R.drawable.icon_checkingin_today, R.drawable.icon_checkingin_week, R.drawable.icon_checkingin_month,
+            R.drawable.icon_product_introduce, R.drawable.icon_contact_us, R.drawable.icon_recommend_friend,
+            R.drawable.icon_change_password, R.drawable.icon_product_introduce};
     private final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_main, container, false);
         for (int i = 0; i < names.length; i++) {
-            list.add(new GridItem(names[i]));
+            list.add(new GridItem(names[i], resIds[i]));
         }
 
         mGridView = (GridView) rootView.findViewById(R.id.gridview);

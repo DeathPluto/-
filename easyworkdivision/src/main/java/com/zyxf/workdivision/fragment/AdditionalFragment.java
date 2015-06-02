@@ -29,12 +29,13 @@ public class AdditionalFragment extends BaseFragment {
     private GridAdapter adapter;
     private List<GridItem> list = new ArrayList<>();
     private String[] names = UIUtils.getStringArray(R.array.additional_function);
+    private int[] resIds = new int[]{R.drawable.icon_feedback, R.drawable.icon_link, R.drawable.icon_worker_shop};
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container) {
         rootView = inflater.inflate(R.layout.fragment_additional, container, false);
         for (int i = 0; i < names.length; i++) {
-            list.add(new GridItem(names[i]));
+            list.add(new GridItem(names[i], resIds[i]));
         }
         mGridView = (GridView) rootView.findViewById(R.id.gridview);
 

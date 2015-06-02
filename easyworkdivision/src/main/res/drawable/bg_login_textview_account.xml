@@ -5,6 +5,6 @@
         android:bottomLeftRadius="0dp"
         android:bottomRightRadius="0dp"
         android:topRightRadius="0dp" />
-    <solid android:color="@color/c_8FC400" />
+    <solid android:color="@color/c_ABD2E5" />
 
 </shape>

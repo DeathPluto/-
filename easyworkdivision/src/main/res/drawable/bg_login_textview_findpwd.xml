@@ -3,6 +3,6 @@
     <corners
         android:topLeftRadius="@dimen/round_corner_radius"
         android:bottomLeftRadius="@dimen/round_corner_radius" />
-    <solid android:color="@color/c_999999" />
+    <solid android:color="@color/c_D3D3D3" />
 
 </shape>

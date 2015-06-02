@@ -12,6 +12,7 @@ public class BrowserUtils {
     public static void openWebSite(Context context, String url) {
         Uri uri = Uri.parse(url);
         Intent it = new Intent(Intent.ACTION_VIEW, uri);
+        it.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(it);
     }
 }

@@ -5,24 +5,25 @@
     android:layout_height="match_parent"
     android:weightSum="830">
 
-    <include layout="@layout/include_titlebar_content" />
+
+    <RelativeLayout
+        android:background="@color/c_ABD2E5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="210">
+
+        <ImageView
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="40" />
-
-    <ImageView
-        android:src="@drawable/ic_launcher"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="110" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="30" />
+        android:layout_weight="100" />
 
     <LinearLayout
         android:weightSum="470"
@@ -113,8 +114,8 @@
 
         <TextView
             android:id="@+id/tv_login"
-            android:text="登陆"
-            android:textColor="@color/c_F0FADA"
+            android:text="登  陆"
+            android:textColor="@android:color/black"
             android:gravity="center"
             android:background="@drawable/bg_login_textview_login"
             style="@style/LoginUserAreaEditText" />
@@ -129,12 +130,20 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="170" />
+        android:layout_weight="100" />
+
+
+    <View
+        android:background="@color/c_ABD2E5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
 
     <LinearLayout
         android:weightSum="470"
         android:orientation="horizontal"
         android:layout_weight="100"
+        android:background="@color/c_ABD2E5"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
@@ -149,7 +158,7 @@
             style="@style/LoginFuncLinearLayout">
 
             <ImageView
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/icon_product_introduce"
                 style="@style/LoginFuncImageView" />
 
             <TextView
@@ -168,7 +177,7 @@
             style="@style/LoginFuncLinearLayout">
 
             <ImageView
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/icon_contact_us"
                 style="@style/LoginFuncImageView" />
 
             <TextView
@@ -187,7 +196,7 @@
             style="@style/LoginFuncLinearLayout">
 
             <ImageView
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/icon_recommend_friend"
                 style="@style/LoginFuncImageView" />
 
             <TextView
@@ -205,7 +214,7 @@
             style="@style/LoginFuncLinearLayout">
 
             <ImageView
-                android:src="@drawable/ic_launcher"
+                android:src="@drawable/icon_worker_shop"
                 style="@style/LoginFuncImageView" />
 
             <TextView
@@ -215,10 +224,16 @@
         </LinearLayout>
 
         <View
+            android:background="@color/c_ABD2E5"
             android:layout_width="0dp"
             android:layout_weight="30"
             android:layout_height="match_parent" />
     </LinearLayout>
 
+    <View
+        android:background="@color/c_ABD2E5"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30" />
 
 </LinearLayout>

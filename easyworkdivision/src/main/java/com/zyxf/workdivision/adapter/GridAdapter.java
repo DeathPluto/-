@@ -24,7 +24,7 @@ public class GridAdapter extends BaseAdapter<GridItem> {
         GridItem item = getItem(position);
         TextView textView = (TextView) View.inflate(parent.getContext(), R.layout.item_gridview, null);
         textView.setText(item.name);
-        textView.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_launcher, 0, 0);
+        textView.setCompoundDrawablesWithIntrinsicBounds(0, item.resId, 0, 0);
         return textView;
     }
 }

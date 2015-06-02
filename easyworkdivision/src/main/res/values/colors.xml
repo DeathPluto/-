@@ -13,4 +13,11 @@
 
 
     <color name="c_3333cc">#3333cc</color>
+
+    <color name="c_F19314">#F19314</color>
+    <color name="c_1D2C5A">#1D2C5A</color>
+    <color name="c_ABD2E5">#ABD2E5</color>
+    <color name="c_F9FCFC">#F9FCFC</color>
+    <color name="c_D3D3D3">#D3D3D3</color>
+    <color name="font_color">#2d2e2e</color>
 </resources>

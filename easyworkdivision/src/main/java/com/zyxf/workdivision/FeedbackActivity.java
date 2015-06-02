@@ -3,8 +3,10 @@ package com.zyxf.workdivision;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gc.materialdesign.views.ButtonFlat;
+import com.zyxf.workdivision.application.HalcyonApplication;
 import com.zyxf.workdivision.base.BaseActivity;
 
 /**
@@ -52,6 +54,8 @@ public class FeedbackActivity extends BaseActivity {
         //TODO 调用反馈信息接口
 //        Toast.makeText(this, "建设中...", Toast.LENGTH_SHORT).show();
         clear();
+        Toast.makeText(HalcyonApplication.getApplication(), "感谢您的反馈!", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void clear() {
