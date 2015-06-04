@@ -33,6 +33,18 @@ public abstract class BaseActivity extends FragmentActivity implements OnClickLi
 
     }
 
+    public ACache getCache() {
+        return mCache;
+    }
+
+    public VolleyTool getVolley() {
+        return mVolley;
+    }
+
+    public RequestQueue getQueue() {
+        return mQueue;
+    }
+
     protected abstract void initView();
 
     protected abstract void setListeners();

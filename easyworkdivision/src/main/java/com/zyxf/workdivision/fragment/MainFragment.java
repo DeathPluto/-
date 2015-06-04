@@ -1,5 +1,7 @@
 package com.zyxf.workdivision.fragment;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -9,6 +11,12 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.umeng.socialize.controller.UMServiceFactory;
 import com.umeng.socialize.controller.UMSocialService;
 import com.umeng.socialize.media.UMImage;
@@ -19,6 +27,7 @@ import com.umeng.socialize.sso.UMQQSsoHandler;
 import com.umeng.socialize.weixin.controller.UMWXHandler;
 import com.zyxf.workdivision.ContactUsActivity;
 import com.zyxf.workdivision.IntroduceActivity;
+import com.zyxf.workdivision.MainActivity;
 import com.zyxf.workdivision.MonthCheckinginActivity;
 import com.zyxf.workdivision.ProjectActivity;
 import com.zyxf.workdivision.R;
@@ -28,10 +37,19 @@ import com.zyxf.workdivision.adapter.GridAdapter;
 import com.zyxf.workdivision.application.HalcyonApplication;
 import com.zyxf.workdivision.base.BaseFragment;
 import com.zyxf.workdivision.bean.GridItem;
+import com.zyxf.workdivision.bean.response.Check;
+import com.zyxf.workdivision.config.Constants;
+import com.zyxf.workdivision.http.Urls;
+import com.zyxf.workdivision.manager.DialogManager;
+import com.zyxf.workdivision.utils.ACache;
+import com.zyxf.workdivision.utils.LogUtils;
+import com.zyxf.workdivision.utils.PreferenceUtils;
 import com.zyxf.workdivision.utils.UIUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by DeathPluto on 2015/5/18.
@@ -46,6 +64,7 @@ public class MainFragment extends BaseFragment {
             R.drawable.icon_product_introduce, R.drawable.icon_contact_us, R.drawable.icon_recommend_friend,
             R.drawable.icon_change_password, R.drawable.icon_product_introduce};
     private final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
+    private Dialog progressDialog;
 
     @Override
     protected void initView(LayoutInflater inflater, ViewGroup container) {
@@ -89,8 +108,7 @@ public class MainFragment extends BaseFragment {
                         mController.openShare(getActivity(), false);
                         break;
                     case 6:
-                        //TODO 修改密码(暂无)
-                        Toast.makeText(HalcyonApplication.getApplication(), "建设中...", Toast.LENGTH_SHORT).show();
+                        changePwd();
                         break;
                     case 7:
                         startActivity(ProjectActivity.class);
@@ -99,6 +117,59 @@ public class MainFragment extends BaseFragment {
             }
         });
         initShare();
+    }
+
+    private void changePwd() {
+        ACache cache = ((MainActivity) getActivity()).getCache();
+        Check check = (Check) cache.getAsObject(Constants.CHECK);
+        final RequestQueue queue = ((MainActivity) getActivity()).getQueue();
+
+
+        final String url = Urls.URL_CHANGE_PASSWORD + check.user.id;
+        DialogManager.showChangePwdDialog(getActivity(), new DialogManager.ChangePwdListener() {
+            @Override
+            public void onChange(final DialogInterface dialog, final String newPassword) {
+                progressDialog = DialogManager.showProgressDialog(getActivity(), "修改中");
+                StringRequest request = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+
+                        Toast.makeText(getActivity(), "修改成功!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        LogUtils.i(volleyError.toString() + "");
+                        dialog.dismiss();
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+                    }
+                }) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        Map<String, String> map = new HashMap<>();
+                        String cookie = PreferenceUtils.getString(HalcyonApplication.getApplication(), Constants.COOKIE, null);
+                        map.put("Cookie", cookie);
+                        return map;
+                    }
+
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("password", newPassword);
+                        return map;
+                    }
+                };
+                queue.add(request);
+            }
+        });
+
+
     }
 
     private void initShare() {

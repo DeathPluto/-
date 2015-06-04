@@ -38,6 +38,7 @@
     </style>
 
     <style name="LoginUserAreaEditText">
+        <item name="android:textSize">@dimen/small_textsize</item>
         <item name="android:singleLine">true</item>
         <item name="android:layout_weight">310</item>
         <item name="android:layout_width">0dp</item>
@@ -108,7 +109,7 @@
 
     <style name="ProjectInfoItem.LinearLayout">
         <item name="android:weightSum">17</item>
-        <item name="android:background">@color/c_F0FADA</item>
+        <item name="android:background">@color/c_ABD2E5</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:paddingLeft">@dimen/activity_padding</item>
@@ -133,7 +134,6 @@
     </style>
 
     <style name="ProjectInfoTextView.Content">
-        <item name="android:paddingLeft">6dp</item>
         <item name="android:textColor">@color/c_3333cc</item>
         <item name="android:layout_weight">12</item>
         <item name="android:gravity">center_vertical</item>
@@ -145,7 +145,22 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">24dp</item>
         <item name="android:layout_marginRight">24dp</item>
-        <item name="android:background">@color/c_8FC400</item>
+        <item name="android:background">@color/c_ABD2E5</item>
+    </style>
+
+    <style name="ChangePwdEditText">
+        <item name="android:inputType">textPassword</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginLeft">@dimen/dialog_edittext_marginleft</item>
+        <item name="android:layout_marginRight">@dimen/dialog_edittext_marginleft</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingLeft">6dp</item>
+        <item name="android:textSize">@dimen/small_textsize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:background">@drawable/bg_dialog_change_pwd_edittext</item>
     </style>
 
 </resources>

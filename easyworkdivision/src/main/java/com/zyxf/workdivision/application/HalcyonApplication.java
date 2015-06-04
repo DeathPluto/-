@@ -59,7 +59,7 @@ public class HalcyonApplication extends Application {
         this.mMainThread = Thread.currentThread();
         this.mMainThreadId = android.os.Process.myTid();
         /* 全局捕获异常 */
-        Thread.currentThread().setUncaughtExceptionHandler(new HalcyonExceptionHandler());
+//        Thread.currentThread().setUncaughtExceptionHandler(new HalcyonExceptionHandler());
         super.onCreate();
     }
 

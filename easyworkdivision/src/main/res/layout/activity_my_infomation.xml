@@ -14,7 +14,7 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="姓名"
+            android:text="姓名:"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
@@ -33,10 +33,12 @@
             style="@style/ProjectInfoTextView.Label"
             android:layout_weight="4" />
 
+        <View style="@style/ProjectInfoTextView.Holder" />
+
         <TextView
             android:id="@+id/tv_sex"
             style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
 
@@ -45,10 +47,12 @@
             style="@style/ProjectInfoTextView.Label"
             android:layout_weight="4" />
 
+        <View style="@style/ProjectInfoTextView.Holder" />
+
         <TextView
             android:id="@+id/tv_ethnic"
             style="@style/ProjectInfoTextView.Content"
-            android:layout_weight="4" />
+            android:layout_weight="3" />
     </LinearLayout>
 
     <View style="@style/ProjectInfoItem" />
@@ -56,7 +60,7 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="出生"
+            android:text="出生:"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
@@ -71,7 +75,7 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="住址"
+            android:text="住址:"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />
@@ -86,7 +90,7 @@
     <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
 
         <TextView
-            android:text="身份证"
+            android:text="身份证:"
             style="@style/ProjectInfoTextView.Label" />
 
         <View style="@style/ProjectInfoTextView.Holder" />

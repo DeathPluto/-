@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="main_function">
-        <item>实时考勤</item>
+        <item>当日考勤</item>
         <item>周考勤</item>
         <item>月考勤</item>
         <item>产品介绍</item>

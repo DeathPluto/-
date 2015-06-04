@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="770"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="项目中文名称:"
+            style="@style/ProjectInfoTextView.Label" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="@style/ProjectInfoTextView.Content" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="项目英文名称:"
+            style="@style/ProjectInfoTextView.Label" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_name_en"
+            style="@style/ProjectInfoTextView.Content" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="所在国家:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_country"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:text="所在城市:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_city"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="项目地址:"
+            style="@style/ProjectInfoTextView.Label" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            style="@style/ProjectInfoTextView.Content" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="负责人:"
+            style="@style/ProjectInfoTextView.Label" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_person"
+            style="@style/ProjectInfoTextView.Content" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="传真号码:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_fax"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:text="邮政编码:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_post"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+    </LinearLayout>
+
+    <View style="@style/ProjectInfoItem" />
+
+    <LinearLayout style="@style/ProjectInfoItem.LinearLayout">
+
+        <TextView
+            android:text="电话一:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_phone_1"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:text="电话二:"
+            style="@style/ProjectInfoTextView.Label"
+            android:layout_weight="4" />
+
+        <View style="@style/ProjectInfoTextView.Holder" />
+
+        <TextView
+            android:id="@+id/tv_phone_2"
+            style="@style/ProjectInfoTextView.Content"
+            android:layout_weight="3" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/ProjectInfoItem"
+        android:layout_weight="70" />
+
+</LinearLayout>

@@ -153,6 +153,7 @@ public class LoginActivity extends BaseActivity {
         this.findViewById(R.id.ll_share).setOnClickListener(this);
         this.findViewById(R.id.ll_shop).setOnClickListener(this);
         this.findViewById(R.id.tv_login).setOnClickListener(this);
+        this.findViewById(R.id.tv_find_pwd).setOnClickListener(this);
     }
 
     @Override
@@ -172,6 +173,9 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.tv_login:
                 login();
+                break;
+            case R.id.tv_find_pwd:
+                Toast.makeText(this, "请联系 18588206413 找回密码!", Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -202,6 +206,7 @@ public class LoginActivity extends BaseActivity {
                 if (loginProgressDialog.isShowing()) {
                     loginProgressDialog.dismiss();
                 }
+                Toast.makeText(getApplicationContext(), "账号或者密码错误,请重试", Toast.LENGTH_SHORT).show();
             }
         }
         ) {
@@ -248,6 +253,7 @@ public class LoginActivity extends BaseActivity {
                 if (loginProgressDialog.isShowing()) {
                     loginProgressDialog.dismiss();
                 }
+                Toast.makeText(getApplicationContext(), "账号或者密码错误,请重试", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

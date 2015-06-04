@@ -15,4 +15,5 @@
     <dimen name="round_corner_radius">8dp</dimen>
     <dimen name="gridview_vertical_spacing">12dp</dimen>
     <dimen name="activity_padding">12dp</dimen>
+    <dimen name="dialog_edittext_marginleft">24dp</dimen>
 </resources>

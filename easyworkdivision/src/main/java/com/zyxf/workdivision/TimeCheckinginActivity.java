@@ -64,6 +64,7 @@ public class TimeCheckinginActivity extends BaseActivity {
     private Dialog progressDialog;
     private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private TextView emptyTv;
+    private boolean hasInitChart = false;
 
     @Override
     protected void initView() {
@@ -90,7 +91,7 @@ public class TimeCheckinginActivity extends BaseActivity {
         }
 
 
-        titleTv.setText("实时考勤");
+        titleTv.setText("当日考勤");
 
     }
 
@@ -123,43 +124,46 @@ public class TimeCheckinginActivity extends BaseActivity {
     }
 
     private void initChart() {
-        mChart.setDrawBarShadow(false);
-        mChart.setDrawValueAboveBar(true);
-        mChart.setDescription("");
-        mChart.setNoDataTextDescription("无考勤记录");
-        mChart.setMaxVisibleValueCount(50);
-        mChart.setPinchZoom(false);
-        mChart.setDrawGridBackground(false);
-        mChart.animateXY(1200, 1200);
-        mChart.setNoDataText("无考勤记录");
-        mChart.setVisibleXRange(0.8f);
+        if (!hasInitChart) {
+            hasInitChart = true;
+            mChart.setDrawBarShadow(false);
+            mChart.setDrawValueAboveBar(true);
+            mChart.setDescription("");
+            mChart.setNoDataTextDescription("无考勤记录");
+            mChart.setPinchZoom(false);
+            mChart.setScaleYEnabled(false);
+            mChart.setDrawGridBackground(false);
+            mChart.animateXY(1200, 1200);
+            mChart.setNoDataText("无考勤记录");
+            mChart.setVisibleXRange(3);
+            mChart.zoom(3.0f, 1.0f, 0, 0);
+            mTf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
 
-        mTf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
+            XAxis xAxis = mChart.getXAxis();
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setTypeface(mTf);
+            xAxis.setAdjustXLabels(true);
+            xAxis.setDrawGridLines(false);
+            xAxis.setTextSize(7f);
+            ValueFormatter custom = new YValueFormatter();
 
-        XAxis xAxis = mChart.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTypeface(mTf);
-        xAxis.setDrawGridLines(false);
-        xAxis.setSpaceBetweenLabels(5);
-        xAxis.setTextSize(7f);
+            YAxis leftAxis = mChart.getAxisLeft();
+            leftAxis.setTypeface(mTf);
+            leftAxis.setLabelCount(5);
+            leftAxis.setXOffset(10);
+            leftAxis.setValueFormatter(custom);
+            leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
+            leftAxis.setSpaceTop(15f);
 
-        ValueFormatter custom = new YValueFormatter();
+            mChart.getAxisRight().setEnabled(false);
 
-        YAxis leftAxis = mChart.getAxisLeft();
-        leftAxis.setTypeface(mTf);
-        leftAxis.setLabelCount(8);
-        leftAxis.setValueFormatter(custom);
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setSpaceTop(15f);
-
-        mChart.getAxisRight().setEnabled(false);
-
-        Legend l = mChart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
-        l.setForm(Legend.LegendForm.SQUARE);
-        l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
+            Legend l = mChart.getLegend();
+            l.setPosition(Legend.LegendPosition.BELOW_CHART_LEFT);
+            l.setForm(Legend.LegendForm.SQUARE);
+            l.setFormSize(9f);
+            l.setTextSize(11f);
+            l.setXEntrySpace(4f);
+        }
 
 
         setData();
@@ -171,7 +175,7 @@ public class TimeCheckinginActivity extends BaseActivity {
         for (String department : departments) {
             xVals.add(department);
         }
-
+        int maxCount = 10;
         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
         for (int i = 0; i < departments.length; i++) {
             int count = 0;
@@ -180,8 +184,13 @@ public class TimeCheckinginActivity extends BaseActivity {
                     count++;
                 }
             }
+            maxCount = maxCount < count ? count : maxCount;
             yVals.add(new BarEntry(count, i));
         }
+
+        YAxis leftAxis = mChart.getAxisLeft();
+        leftAxis.setLabelCount(maxCount / 5);
+
         BarDataSet set = new BarDataSet(yVals, "到工人数");
         set.setBarSpacePercent(45f);
 
@@ -191,6 +200,7 @@ public class TimeCheckinginActivity extends BaseActivity {
         BarData data = new BarData(xVals, dataSets);
         data.setValueTextSize(10f);
         data.setValueTypeface(mTf);
+        data.setGroupSpace(100);
         data.setValueFormatter(new XValueFormatter());
         mChart.setData(data);
     }
