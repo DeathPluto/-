@@ -14,6 +14,9 @@ public class Checkingin implements Serializable {
     public String name;
     public String comment;
     public String serial_number;
+    // in out
+    public String type;
+
 
     @Override
     public String toString() {

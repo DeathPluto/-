@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
@@ -262,10 +263,14 @@ public class WeekCheckinginActivity extends BaseActivity {
         }
         int maxCount = 10;
         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+        HashSet<String> ids = new HashSet<>();
         for (int i = 0; i < departments.length; i++) {
             int count = 0;
             for (int j = 0; j < list.size(); j++) {
-                if (TextUtils.equals(list.get(j).department, departments[i])) {
+                String id_string = list.get(j).id_string;
+                if (TextUtils.equals(list.get(j).department, departments[i])
+                        && !ids.contains(id_string)) {
+                    ids.add(id_string);
                     count++;
                 }
             }
@@ -319,23 +324,28 @@ public class WeekCheckinginActivity extends BaseActivity {
 
     private String getStartTime() {
         Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-        c.setTimeInMillis(mondayMilli + WEEK_MILLI * currentPosition);
+        while (c.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
+            c.add(Calendar.DATE, -1);
+        }
+        c.add(Calendar.WEEK_OF_YEAR, currentPosition);
+        LogUtils.i("起始:\n" + new Date(c.getTimeInMillis()).toLocaleString());
         return sdf.format(c.getTime());
     }
 
     private String getEndTime() {
-        if (currentPosition == 0) {
-            return sdf.format(new Date());
-        } else {
-            Calendar c = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-            c.setTimeInMillis(mondayMilli + WEEK_MILLI * (Math.abs(currentPosition) - 1));
-            return sdf.format(c.getTime());
+        Calendar c = Calendar.getInstance();
+        while (c.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
+            c.add(Calendar.DATE, 1);
         }
+        c.add(Calendar.WEEK_OF_YEAR, currentPosition);
+        LogUtils.i("结束:\n" + new Date(c.getTimeInMillis()).toLocaleString());
+        return sdf.format(c.getTime());
 
     }
 
 
     private void loadMore() {
+
         String url = checkinginForm.next_page_url +
                 "?begin_timestamp=" + getStartTime() +
                 "&end_timestamp=" + getEndTime();
@@ -393,11 +403,13 @@ public class WeekCheckinginActivity extends BaseActivity {
         TextView nameTv;
         TextView timeTv;
         TextView numberTv;
+        TextView typeTv;
 
         public ViewHolder(View v) {
             nameTv = (TextView) v.findViewById(R.id.tv_name);
             timeTv = (TextView) v.findViewById(R.id.tv_time);
             numberTv = (TextView) v.findViewById(R.id.tv_number);
+            typeTv = (TextView) v.findViewById(R.id.tv_type);
         }
     }
 
@@ -421,6 +433,12 @@ public class WeekCheckinginActivity extends BaseActivity {
             holder.numberTv.setText(item.serial_number);
             holder.nameTv.setText(item.name);
             holder.timeTv.setText(item.attendance_timestamp);
+            if (TextUtils.equals("in", item.type)) {
+                holder.typeTv.setText(UIUtils.getString(R.string.checkingin_type_in));
+            } else {
+                holder.typeTv.setText(UIUtils.getString(R.string.checkingin_type_out));
+            }
+            holder.typeTv.setText(item.type);
             return convertView;
         }
     }

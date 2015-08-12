@@ -9,7 +9,8 @@
     <string name="company_address">公司地址:深圳市福田区车公庙泰然工贸园211栋415室</string>
     <string name="company_tel">联系电话:0755-xxxxxxxx</string>
     <string name="company_slogan">专注于考勤技术,做工地现场管理专家!</string>
-
+    <string name="checkingin_type_in">进</string>
+    <string name="checkingin_type_out">出</string>
 
     <integer name="feedback_theme_limit">14</integer>
 </resources>

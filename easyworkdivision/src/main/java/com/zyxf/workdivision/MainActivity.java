@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zyxf.workdivision.base.BaseActivity;
 import com.zyxf.workdivision.base.BaseFragment;
+import com.zyxf.workdivision.config.Constants;
 import com.zyxf.workdivision.fragment.AdditionalFragment;
 import com.zyxf.workdivision.fragment.MainFragment;
+import com.zyxf.workdivision.utils.PreferenceUtils;
 import com.zyxf.workdivision.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -45,6 +48,21 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
         adapter = new SlideAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        int openTimes = PreferenceUtils.getInt(getApplicationContext(), Constants.OPEN_TIMES, 0);
+        PreferenceUtils.putInt(
+                getApplicationContext(),
+                Constants.OPEN_TIMES,
+                ++openTimes
+        );
+        if (openTimes > 50) {
+            Toast.makeText(getApplicationContext(), "试用结束,请安装正式版:)", Toast.LENGTH_SHORT).show();
+            finish();
+        }
     }
 
     @Override

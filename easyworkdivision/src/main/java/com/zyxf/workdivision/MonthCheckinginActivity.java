@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
@@ -107,11 +108,6 @@ public class MonthCheckinginActivity extends BaseActivity {
         this.findViewById(R.id.btn_prev).setOnClickListener(this);
     }
 
-    private long getMondayMilli() {
-        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY); //获取本周一的日期
-        return cal.getTimeInMillis();
-    }
 
     @Override
     protected void initAfterSetListeners() {
@@ -253,6 +249,7 @@ public class MonthCheckinginActivity extends BaseActivity {
     }
 
     private void setData() {
+        LogUtils.i("list" + list.toString());
         String[] departments = UIUtils.getStringArray(R.array.departments);
         ArrayList<String> xVals = new ArrayList<String>();
         for (String department : departments) {
@@ -260,17 +257,21 @@ public class MonthCheckinginActivity extends BaseActivity {
         }
         int maxCount = 10;
         ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+        HashSet<String> ids = new HashSet<>();
         for (int i = 0; i < departments.length; i++) {
             int count = 0;
             for (int j = 0; j < list.size(); j++) {
-                if (TextUtils.equals(list.get(j).department, departments[i])) {
+                String id_string = list.get(j).id_string;
+                if (TextUtils.equals(list.get(j).department, departments[i])
+                        && !ids.contains(id_string)) {
+                    ids.add(id_string);
                     count++;
                 }
             }
             maxCount = maxCount < count ? count : maxCount;
             yVals.add(new BarEntry(count, i));
         }
-
+        LogUtils.i("yVals" + yVals.size());
         YAxis leftAxis = mChart.getAxisLeft();
         leftAxis.setLabelCount(maxCount / 5);
 
@@ -316,21 +317,21 @@ public class MonthCheckinginActivity extends BaseActivity {
     }
 
     private String getStartTime() {
-        Calendar c = Calendar.getInstance();
-        c.add(Calendar.MONTH, currentPosition);
-        c.set(Calendar.DAY_OF_MONTH, 1);//设置为1号,当前日期既为本月第一天
-        return sdf.format(c.getTime());
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        calendar.add(Calendar.MONTH, currentPosition);
+        calendar.set(Calendar.DAY_OF_MONTH, calendar
+                .getActualMinimum(Calendar.DAY_OF_MONTH));
+        LogUtils.i("本月第一天:\n" + new Date(calendar.getTimeInMillis()).toLocaleString());
+        return sdf.format(calendar.getTime());
     }
 
     private String getEndTime() {
-        if (currentPosition == 0) {
-            return sdf.format(new Date());
-        } else {
-            Calendar c = Calendar.getInstance();
-            c.add(Calendar.MONTH, currentPosition);
-            c.set(Calendar.DAY_OF_MONTH, c.getActualMaximum(Calendar.DAY_OF_MONTH));
-            return sdf.format(c.getTime());
-        }
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone(Constants.TIMEZONE));
+        calendar.add(Calendar.MONTH, currentPosition);
+        calendar.set(Calendar.DAY_OF_MONTH, calendar
+                .getActualMaximum(Calendar.DAY_OF_MONTH));
+        LogUtils.i("本月最后一天:\n" + new Date(calendar.getTimeInMillis()).toLocaleString());
+        return sdf.format(calendar.getTime());
 
     }
 
@@ -393,11 +394,13 @@ public class MonthCheckinginActivity extends BaseActivity {
         TextView nameTv;
         TextView timeTv;
         TextView numberTv;
+        TextView typeTv;
 
         public ViewHolder(View v) {
             nameTv = (TextView) v.findViewById(R.id.tv_name);
             timeTv = (TextView) v.findViewById(R.id.tv_time);
             numberTv = (TextView) v.findViewById(R.id.tv_number);
+            typeTv = (TextView) v.findViewById(R.id.tv_type);
         }
     }
 
@@ -421,6 +424,12 @@ public class MonthCheckinginActivity extends BaseActivity {
             holder.numberTv.setText(item.serial_number);
             holder.nameTv.setText(item.name);
             holder.timeTv.setText(item.attendance_timestamp);
+            if (TextUtils.equals("in", item.type)) {
+                holder.typeTv.setText(UIUtils.getString(R.string.checkingin_type_in));
+            } else {
+                holder.typeTv.setText(UIUtils.getString(R.string.checkingin_type_out));
+            }
+            holder.typeTv.setText(item.type);
             return convertView;
         }
     }

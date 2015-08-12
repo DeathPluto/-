@@ -47,6 +47,7 @@ public class LoginActivity extends BaseActivity {
     private boolean hasLogin = false;
     private Dialog progressDialog;
 
+
     private final UMSocialService mController = UMServiceFactory.getUMSocialService("com.umeng.share");
     private Dialog loginProgressDialog;
 
@@ -184,6 +185,7 @@ public class LoginActivity extends BaseActivity {
         loginProgressDialog = DialogManager.showProgressDialog(this, "登陆中...");
         final String account = accountEt.getText().toString().trim();
         final String password = passwordEt.getText().toString().trim();
+        boolean isIDNum = account.length() == 18 ? true : false;
 
         if (TextUtils.isEmpty(account) || TextUtils.isEmpty(password)) {
             passwordEt.setText("");
@@ -283,8 +285,12 @@ public class LoginActivity extends BaseActivity {
                 return "utf-8";
             }
         };
-        mQueue.add(leaderRequest);
-        mQueue.add(workerRequest);
+
+        if (isIDNum) {
+            mQueue.add(workerRequest);
+        } else {
+            mQueue.add(leaderRequest);
+        }
     }
 
     private void jumpAfterCheck() {

@@ -13,4 +13,6 @@ public interface Constants {
 
     public static final String CHECK = "Check";
 
+    public static final String OPEN_TIMES = "OpenTimes";
+
 }

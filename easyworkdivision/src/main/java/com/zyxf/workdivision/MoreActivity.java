@@ -3,14 +3,12 @@ package com.zyxf.workdivision;
 import android.app.Dialog;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.zyxf.workdivision.application.HalcyonApplication;
 import com.zyxf.workdivision.base.BaseActivity;
 import com.zyxf.workdivision.config.Constants;
 import com.zyxf.workdivision.http.Urls;
@@ -90,9 +88,11 @@ public class MoreActivity extends BaseActivity {
                 if (volleyError != null) {
                     LogUtils.i("登出失败\n" + volleyError.toString());
                 }
+                PreferenceUtils.putBoolean(getApplicationContext(), Constants.HAS_LOGIN, false);
+                mCache.put(Constants.CHECK, "");
                 progressDialog.dismiss();
-                Toast.makeText(HalcyonApplication.getApplication(), "登出失败!", Toast.LENGTH_SHORT).show();
-
+                startActivity(LoginActivity.class);
+                finish();
             }
         }) {
             @Override

@@ -76,6 +76,7 @@ public class ProjectActivity extends BaseActivity {
         String url = resProject.next_page_url;
         if (TextUtils.isEmpty(url)) {
             Toast.makeText(getApplicationContext(), "无更多工程信息了", Toast.LENGTH_SHORT).show();
+            mListView.onRefreshComplete();
         } else {
             StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
